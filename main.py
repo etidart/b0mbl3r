@@ -141,10 +141,19 @@ def phone_check():
             print("Неверный Ввод. Вы уверены, что ввели число?")
             phone_check()
         if int(id_user) >= 1 and int(id_user) <= massa:
-            print("ID: " + str(file_data[int(id_user) - 1]["id"]) + '\nИМЯ: ' + file_data[int(id_user) - 1]["name"] + '\nТЕЛЕФОН: +' + file_data[int(id_user) - 1]["number"])
+            id_of = 0
+			name = "A"
+			number = "56"
+			for mip in range(massa):
+				if file_n_data[int(mip)]["id"] == int(id_user):
+					id_of = file_n_data[int(mip)]["id"]
+					name = file_n_data[int(mip)]["name"]
+					number = file_n_data[int(mip)]["number"]
+
+        print("ID: " + str(id_of) + '\nNAME: ' + name + '\nPHONE: +' + number)
             het = input("Вы хотите продолжить?")
             if het == "YES":
-                PHONE = file_data[int(id_user) - 1]["number"]
+                PHONE = number
             elif het == "NO":
                 # bomb.terminate()
                 file_m.close()
