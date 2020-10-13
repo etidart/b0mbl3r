@@ -8,9 +8,6 @@ file_n_data = json.load(file_n)
 file_m = codecs.open("js/massa.json", "r", "utf_8_sig")
 file_m_data = json.load(file_m)
 
-print('Количество объектов: ' + str(file_m_data["massa"]))
-
-
 def chck():
     het = input("\nСледующие действия: ")
     if het == "LOOK":

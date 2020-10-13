@@ -50,7 +50,7 @@ def phone_check():
 
 phone_check()
 
-n_id = int(file_m_data["massa"]) - 1
+n_id = int(file_m_data["massa"])
 
 file_m_data.update({"massa": n_id})
 file_n_data.pop(int(id) - 1)
