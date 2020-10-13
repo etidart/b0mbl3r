@@ -22,10 +22,21 @@ def phone_check():
         print("Некорректный ввод. Вы уверены, что ввели число?")
         phone_check()
     if int(id_user) >= 1 and int(id_user) <= massa:
-        print("ID: " + str(file_n_data[int(id_user) - 1]["id"]) + '\nNAME: ' + file_n_data[int(id_user) - 1]["name"] + '\nPHONE: +' + file_n_data[int(id_user) - 1]["number"])
+        id_of = 0
+		name = "A"
+		number = "56"
+		nap = 0
+		for mip in range(massa):
+			if file_n_data[int(mip)]["id"] == int(id_user):
+				id_of = file_n_data[int(mip)]["id"]
+				name = file_n_data[int(mip)]["name"]
+				number = file_n_data[int(mip)]["number"]
+				nap = mip
+
+        print("ID: " + str(id_of) + '\nNAME: ' + name + '\nPHONE: +' + number)
         het = input("Вы уверены, что хотите продолжить?")
         if het == "YES":
-            id = id_user
+            id = nap
         elif het == "NO":
             file_m.close()
             file_n.close()
@@ -61,4 +72,4 @@ file_n.write(str(file_n_data).replace("'", '"'))
 file_m.close()
 file_n.close()
 
-print("DONE")
+print("ГОТОВО")
