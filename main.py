@@ -6,7 +6,7 @@ import codecs
 
 print("скрипт написан etidart'ом")
 print("\n\nинициализация b0mb3r'a")
-bomb = Popen('b0mb3r', shell=False, stdout=open('stdout.txt', 'wb'), stderr=open('stderr.txt', 'wb'))  # инициализация b0mb3r'а
+bomb = Popen('b0mb3r --port 80', shell=False, stdout=open('stdout.txt', 'wb'), stderr=open('stderr.txt', 'wb'))  # инициализация b0mb3r'а
 time.sleep(15)  # задержка на вс
 print("b0mb3r инициализирован")  # оповещение об окончании
 
