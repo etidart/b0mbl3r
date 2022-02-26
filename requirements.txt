@@ -1,6 +1,2 @@
-json
-codecs
 requests
-subprocess
-time
 db0mb3r
