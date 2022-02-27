@@ -1,2 +1,4 @@
 requests
 db0mb3r
+colorama
+phonenumbers

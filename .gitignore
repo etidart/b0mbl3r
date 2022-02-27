@@ -1,1 +1,4 @@
 *.idea/
+
+stderr.txt
+stdout.txt
